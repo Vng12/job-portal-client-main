@@ -159,5 +159,5 @@ export const deleteHandler = async (url) => {
 };
 
 export const logoutHandler = async () => {
-  return await api.get("/auth/logout");
+  return await api.post("/auth/logout");
 };
