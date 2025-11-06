@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useUserContext } from "../context/UserContext";
+import { postHandler } from "../utils/FetchHandlers";
 
 const Login = () => {
   const { handleFetchMe } = useUserContext();
@@ -29,8 +30,12 @@ const Login = () => {
 
     // posting
     try {
-      const response = await axios.post("/api/v1/auth/login", data, {
-        withCredentials: true,
+      // const response = await axios.post("/api/v1/auth/login", data, {
+      //   withCredentials: true,
+      // });
+      const response = await postHandler({
+        url: "/auth/login",
+        body: data,
       });
       Swal.fire({
         icon: "success",
