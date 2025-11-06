@@ -2,17 +2,17 @@ const people = [
   {
     name: "Vedang Gore",
     role: "Co-Founder",
-    imageUrl: "/src/assets/media/vng.png",
+    imageUrl: "/vng.png",
   },
   {
     name: "Sarthak Rane",
     role: "Co-Founder",
-    imageUrl: "/src/assets/media/srt.png",
+    imageUrl: "/srt.png",
   },
   {
     name: "Priya Chauhan",
     role: "Co-Founder",
-    imageUrl: "/src/assets/media/pry.png",
+    imageUrl: "/pry.png",
   },
 ];
 

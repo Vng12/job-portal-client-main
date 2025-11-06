@@ -99,7 +99,10 @@ export const getAllHandler = async (url) => {
 
     // For jobs endpoint, return the full response to preserve pagination data
     if (url.includes("/jobs") || url.startsWith("jobs")) {
-      console.log("Jobs endpoint detected, returning full response:", publicRes.data);
+      console.log(
+        "Jobs endpoint detected, returning full response:",
+        publicRes.data
+      );
       return publicRes.data;
     }
 
