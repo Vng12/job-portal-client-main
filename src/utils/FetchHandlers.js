@@ -96,12 +96,13 @@ export const getAllHandler = async (url) => {
       }
     );
     console.log("Public API response:", publicRes.data);
-    
+
     // For jobs endpoint, return the full response to preserve pagination data
-    if (url.includes("/jobs")) {
+    if (url.includes("/jobs") || url.startsWith("jobs")) {
+      console.log("Jobs endpoint detected, returning full response:", publicRes.data);
       return publicRes.data;
     }
-    
+
     return publicRes.data?.result !== undefined
       ? publicRes.data.result
       : publicRes.data;
@@ -114,6 +115,10 @@ export const getAllHandler = async (url) => {
     // If the public request fails, try with credentials
     if (error.response?.status === 403 || error.response?.status === 401) {
       const res = await api.get(url);
+      // For jobs endpoint, return full response even with credentials
+      if (url.includes("/jobs") || url.startsWith("jobs")) {
+        return res.data;
+      }
       return res.data?.result !== undefined ? res.data.result : res.data;
     }
     throw error;

@@ -15,7 +15,7 @@ const SearchAndFilter = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const baseUrl = "/api/v1/jobs?page=1&limit=6";
+    const baseUrl = "/jobs?page=1&limit=6";
     let url = baseUrl;
     const queryParams = {};
 
