@@ -96,6 +96,12 @@ export const getAllHandler = async (url) => {
       }
     );
     console.log("Public API response:", publicRes.data);
+    
+    // For jobs endpoint, return the full response to preserve pagination data
+    if (url.includes("/jobs")) {
+      return publicRes.data;
+    }
+    
     return publicRes.data?.result !== undefined
       ? publicRes.data.result
       : publicRes.data;

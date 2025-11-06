@@ -35,13 +35,13 @@ const Login = () => {
         body: data,
       });
       console.log("Login response:", response);
-      
+
       Swal.fire({
         icon: "success",
         title: "Hurray...",
         text: response?.data?.message,
       });
-      
+
       console.log("Fetching user data...");
       await handleFetchMe();
       console.log("User data fetched, navigating to dashboard...");
