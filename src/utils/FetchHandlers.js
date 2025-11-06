@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000/api/v1";
+const BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -13,9 +14,10 @@ export const getBaseUrl = () => BASE_URL;
 export const testConnection = async () => {
   try {
     // Test the root endpoint of the server
-    const response = await axios.get("http://52.66.158.80", {
-      withCredentials: true,
-    });
+    // const response = await axios.get("http://52.66.158.80", {
+    //   withCredentials: true,
+    // });
+    const res = await api.get("/health").catch(async () => await api.get("/"));
     console.log("Server connection test:", response.data);
     return true;
   } catch (error) {
