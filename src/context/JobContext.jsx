@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
 import { getAllHandler } from "../utils/FetchHandlers";
 
 const jobContext = React.createContext();
@@ -12,9 +11,9 @@ const JobContext = ({ children }) => {
   const handleJobFetch = async (url) => {
     setJobLoading(true);
     try {
-      const response = await axios.get(url, { withCredentials: true });
+      const response = await getAllHandler(url);
       setJobError({ status: false, message: "" });
-      setJobs(response?.data);
+      setJobs(response);
     } catch (error) {
       setJobError({ status: true, message: error?.message });
       setJobs({ status: false });
@@ -24,7 +23,7 @@ const JobContext = ({ children }) => {
   };
 
   useEffect(() => {
-    handleJobFetch(`/api/v1/jobs?page=1`);
+    handleJobFetch(`/jobs?page=1`);
   }, []);
   const passing = {
     jobLoading,

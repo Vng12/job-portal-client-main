@@ -5,7 +5,7 @@ import Logo from "../Logo";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../context/UserContext";
 import Swal from "sweetalert2";
-import axios from "axios";
+import { logoutHandler } from "../../utils/FetchHandlers";
 
 const Navbar = ({ navbarRef }) => {
   const { user, handleFetchMe } = useUserContext();
@@ -14,11 +14,7 @@ const Navbar = ({ navbarRef }) => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post(
-        "/api/v1/auth/logout",
-        {},
-        { withCredentials: true }
-      );
+      const response = await logoutHandler();
       Swal.fire({
         icon: "success",
         title: "Logout...",

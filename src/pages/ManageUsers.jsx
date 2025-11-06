@@ -5,9 +5,8 @@ import { CiSquarePlus } from "react-icons/ci";
 import styled from "styled-components";
 
 import Swal from "sweetalert2";
-import { getAllHandler } from "../utils/FetchHandlers";
+import { getAllHandler, deleteHandler } from "../utils/FetchHandlers";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 const ManageUsers = () => {
   const { user: me } = useUserContext();
@@ -41,12 +40,7 @@ const ManageUsers = () => {
 
   const deleteUser = async (id) => {
     try {
-      const response = await axios.delete(
-        `http://52.66.158.80/api/v1/Users/${id}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await deleteHandler(`/Users/${id}`);
       refetch();
       Swal.fire({
         title: "Deleted!",
