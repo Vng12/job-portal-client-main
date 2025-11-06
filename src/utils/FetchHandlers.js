@@ -18,7 +18,7 @@ export const testConnection = async () => {
     //   withCredentials: true,
     // });
     const res = await api.get("/health").catch(async () => await api.get("/"));
-    console.log("Server connection test:", response.data);
+    console.log("Server connection test:", res.data);
     return true;
   } catch (error) {
     console.error("Server connection error:", error.message);
